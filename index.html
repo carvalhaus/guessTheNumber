@@ -2,35 +2,86 @@
 
 <h1>Guess The Number</h1>
 
-<h2>Neste desafio você deve acertar qual número estou pensando, entre 0 e 10. Você terá 4 chances.</h2>
+<h2>Neste desafio você deve acertar, entre uma lista de números, um dos quais eu estou pensando.</h2>
+<p>Você escolherá a quantidade de números que tenho que pensar e terá a mesma quantidade de tentativas.</p><br>
 
-<button>Clique aqui para começar!</button>
+<input placeholder="Número de 1 a 20"/><br>
+<button id="send">Enviar palpite!</button><br><br>
 
 <script>
-    var button = document.querySelector("button");
-
-    function randomNumber () {
-        return Math.round(Math.random() * 10);
+    
+    function randomNumbers () {
+        return Math.round(Math.random() * 20);
     }
+    
+    function drawNumbers (quantity) {
 
-    button.onclick = showText;  
-
-    function showText() {
+        var listNumbers = [];
         
-        var chances = 1;
+        var number = 1;
         
-        while (chances <= 4) {
-            var guess = parseInt(prompt("Qual número estou pensando?"));
-
-            if(guess == randomNumber) {
-                alert("Você acertou o número que eu estava pensando! O número era o " + randomNumber + ".");
-                break;
-            } else {
-                alert("Você errou, tente outra vez!");
+        while (number <= quantity) {
+            
+            var randomNumber = randomNumbers();
+            var find = false;
+            
+            if (randomNumber !== 0) {
+                for (var position = 0; position < listNumbers.length; position++) {
+                    
+                    if(listNumbers[position] == randomNumber) {
+                        find = true;
+                        break;
+                    }
+                    
+                }
+                
+                if (find == false) {
+                    listNumbers.push(randomNumber);
+                    number++;
+                }
             }
-            chances++;
         }
+        
+        return listNumbers;
     }
 
+    function init() {
+
+        var initial = parseInt(prompt("Quantos números devo pensar?"));
+        return initial;
+    }
+
+    var listNumbers = drawNumbers(init());
+
+    var input = document.querySelector("input");
+    input.focus();
+
+        
+    function verify() {
+        
+        var find = false;
+
+        for( var position = 0; position < listNumbers.length; position++) {
+
+            if(input.value == listNumbers[position]) {
+
+                alert("Você acertou um dos números!");
+                find = true;
+                break;
+            }
+        }
+
+        if(find == false) {
+
+            alert("Você errou o número!");
+        }
+
+        input.value = "";
+        input.focus();
+    }
+
+    var button = document.querySelector("#send");
+
+    button.onclick = verify;
 
 </script>
