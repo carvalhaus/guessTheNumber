@@ -1,6 +1,6 @@
 # guessTheNumber
 
-# Atividade proposta no curso JavaScript e HTML: desenvolva um jogo e pratique lógica de programação da **Formação Iniciante em Programação T5 - ONE**.
+## Atividade proposta no curso JavaScript e HTML: desenvolva um jogo e pratique lógica de programação da **Formação Iniciante em Programação T5 - ONE**.
 
 Conforme conteúdos mostrados no curso, desenvolvi um jogo de adivinhar um número entre uma lista de números aleatórios utilizando o básico de JavaScript e HTML.
 
