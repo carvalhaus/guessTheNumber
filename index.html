@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+
+<h1>Guess The Number</h1>
+
+<h2>Neste desafio você deve acertar qual número estou pensando, entre 0 e 10. Você terá 4 chances.</h2>
+
+<button>Clique aqui para começar!</button>
+
+<script>
+    var button = document.querySelector("button");
+
+    function randomNumber () {
+        return Math.round(Math.random() * 10);
+    }
+
+    button.onclick = showText;  
+
+    function showText() {
+        
+        var chances = 1;
+        
+        while (chances <= 4) {
+            var guess = parseInt(prompt("Qual número estou pensando?"));
+
+            if(guess == randomNumber) {
+                alert("Você acertou o número que eu estava pensando! O número era o " + randomNumber + ".");
+                break;
+            } else {
+                alert("Você errou, tente outra vez!");
+            }
+            chances++;
+        }
+    }
+
+
+</script>
